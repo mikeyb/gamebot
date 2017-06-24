@@ -29,6 +29,8 @@ class GameBotController extends Controller
             function(BotMan $bot)
             {
 
+                $user = $bot->getUser();
+
                 $prices = $this->events->getDefaultPrices();
 
                 $message = '|-> Brought to you by `https://GameBot.chat` <-|
@@ -48,7 +50,7 @@ BTC: ' . $prices['mog'][0]->price_btc . '
 ```
                 ';
 
-                $bot->reply($message);
+                $bot->say($message, $user->getId());
 
             }
 
@@ -57,6 +59,8 @@ BTC: ' . $prices['mog'][0]->price_btc . '
         $botman->hears('!price {token}',
             function (BotMan $bot, $token)
             {
+
+                $user = $bot->getUser();
 
                 $prices = $this->events->getToken($token);
 
@@ -70,7 +74,7 @@ BTC: ' . $prices[0]->price_btc . '
 ```
                 ';
 
-                $bot->reply($message);       
+                $bot->say($message, $user->getId());     
 
             }
 
@@ -80,7 +84,7 @@ BTC: ' . $prices[0]->price_btc . '
             function (BotMan $bot)
             {
 
-                $bot->reply('You will want to speak with `mailto:support@bittrex.com`');
+                $bot->reply('You will want to speak with `support@bittrex.com`');
 
             }            
 
