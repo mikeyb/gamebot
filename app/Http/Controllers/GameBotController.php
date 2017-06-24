@@ -84,7 +84,7 @@ BTC: ' . $prices[0]->price_btc . '
             function (BotMan $bot)
             {
 
-                $bot->reply('You will want to speak with `support@bittrex.com`');
+                $bot->reply(':parrot: You will want to speak with `support@bittrex.com` :parrot:');
 
             }            
 
