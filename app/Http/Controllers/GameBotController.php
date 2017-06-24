@@ -32,18 +32,25 @@ class GameBotController extends Controller
                 $prices = $this->events->getDefaultPrices();
 
                 $user = $bot->getUser();
-                
-                $bot->say('
-                    Current Prices
-                    ```
-                    GAME
-                      USD: ' . $prices['game'][0]->price_usd . '
-                      BTC: ' . $prices['game'][0]->price_btc . '
-                    MGO
-                      USD: ' . $prices['mog'][0]->price_usd . '
-                      BTC: ' . $prices['mog'][0]->price_btc . '
-                    ```
-                ', $user->getId());
+
+                $message = '|-> Brought to you by `https://GameBot.chat` <-|
+
+*GAME* | `https://coinmarketcap.com/currencies/gamecredits/`
+
+```
+  USD: ' . $prices['game'][0]->price_usd . '
+  BTC: ' . $prices['game'][0]->price_btc . '
+```
+
+*MGO* | `https://coinmarketcap.com/currencies/mobilego/`
+
+```
+  USD: ' . $prices['mog'][0]->price_usd . '
+  BTC: ' . $prices['mog'][0]->price_btc . '
+```
+                ';
+
+                $bot->reply($message);
 
             }
 
